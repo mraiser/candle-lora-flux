@@ -1,0 +1,42 @@
+[package]
+name = "flux-lora"
+readme = "README.md"
+authors = ["Eric Buehler"]
+version.workspace = true
+edition.workspace = true
+description.workspace = true
+repository.workspace = true
+keywords.workspace = true
+categories.workspace = true
+license.workspace = true
+homepage.workspace = true
+
+[dependencies]
+candle-core.workspace = true
+candle-lora = { version = "0.2.0", path = "../candle-lora" }
+candle-lora-macro = { version = "0.2.0", path = "../candle-lora-macro" }
+candle-lora-transformers = { version = "0.2.0", path = "../candle-lora-transformers" }
+candle-nn.workspace = true
+either.workspace = true
+thiserror.workspace = true
+trc.workspace = true
+
+candle-transformers.workspace = true
+anyhow = "1.0.75"
+clap = { version = "4.4.7", features = ["derive"] }
+tokenizers = "0.19.1"
+tracing = "0.1.40"
+tracing-chrome = "0.7.1"
+tracing-subscriber = "0.3.17"
+hf-hub = "0.3.2"
+serde_json = "1.0.94"
+image = { version = "0.24.7", default-features = false, features = ["jpeg", "png"] }
+
+
+[features]
+cuda = ["candle-core/cuda", "candle-core/cudnn", "candle-nn/cuda", "candle-transformers/cuda"]
+
+[[bin]]
+name = "fluxlora"
+path = "src/main.rs"
+
