@@ -3,6 +3,16 @@
 [![Continuous integration](https://github.com/EricLBuehler/candle-lora/actions/workflows/ci.yml/badge.svg)](https://github.com/EricLBuehler/candle-lora/actions/workflows/ci.yml)
 [![Documentation](https://github.com/EricLBuehler/candle-lora/actions/workflows/docs.yml/badge.svg)](https://ericlbuehler.github.io/candle-lora/candle_lora/)
 
+NOTES ON THIS FORK
+------------------
+This fork is an attempt to bring LoRA to Flux with Candle in Rust. It is not going well.
+Attempting to add the requisite macros results in weird type issues and I lack insight ATM.
+
+Compare:
+candle-lora-transformers/src/flux/model.rs             <-- doesn't work
+candle-lora-transformers/src/flux/model.rs_ORIGINAL    <-- works
+------------------
+
 LoRA (low rank adaptation) implemented in Rust for use with [`Candle`](https://github.com/huggingface/candle/tree/main). This technique
 interchanges the fully-trainable layers of the model with new, LoRA layers. These LoRA layers act as a wrapper over the original layers, but freeze
 the original layers. Because they contain fewer trainable parameters, LoRA allows for more efficient fine-tuning. 
